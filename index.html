@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiteraPrint - Company Profile</title>
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: #333;
+            background: white;
+        }
+
+        /* NAVIGASI */
+        header {
+            background: #142b4a;
+            padding: 20px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 26px;
+        }
+
+        .logo span {
+            color: orange;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: orange;
+        }
+
+        /* HOME */
+        .hero {
+            height: 500px;
+            background: linear-gradient(
+                rgba(0,0,0,0.65),
+                rgba(0,0,0,0.65)
+            ),
+            url("https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1600");
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 10%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: orange;
+            color: #142b4a;
+            padding: 13px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image,
+        .about-content {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .about-content h2,
+        .services h2,
+        .gallery h2,
+        .contact h2 {
+            font-size: 32px;
+            color: #142b4a;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 span {
+            color: orange;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 80px 10%;
+            text-align: center;
+            background: #f4f6f9;
+        }
+
+        .section-description {
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .service-container {
+            display: flex;
+            gap: 25px;
+        }
+
+        .service-card {
+            flex: 1;
+            background: white;
+            padding: 35px 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .service-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: #142b4a;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* GALLERY */
+        .gallery {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .gallery-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .gallery-container img {
+            width: 33.33%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 80px 10%;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: #142b4a;
+            color: white;
+            padding: 35px;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 25px;
+            font-size: 23px;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .contact-form button {
+            padding: 15px;
+            background: orange;
+            color: #142b4a;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background: #142b4a;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #142b4a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            line-height: 2;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .navbar ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .about,
+            .service-container,
+            .contact-container,
+            .gallery-container {
+                flex-direction: column;
+            }
+
+            .gallery-container img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGASI -->
+    <header>
+        <nav class="navbar">
+
+            <h2 class="logo">Litera<span>Print.</span></h2>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <h1>Solusi Cetak Cepat dan Berkualitas</h1>
+
+            <p>
+                LiteraPrint menyediakan layanan percetakan,
+                fotokopi, dan penjilidan dengan hasil terbaik
+                serta pelayanan yang ramah.
+            </p>
+
+            <a href="#contact" class="btn">Hubungi Kami</a>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+
+        <div class="about-image">
+            <img
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800"
+                alt="Aktivitas LiteraPrint">
+        </div>
+
+        <div class="about-content">
+
+            <h2>Tentang <span>LiteraPrint</span></h2>
+
+            <p>
+                LiteraPrint merupakan usaha yang bergerak
+                di bidang jasa percetakan dan administrasi
+                dokumen. Kami hadir untuk membantu kebutuhan
+                cetak masyarakat dengan pelayanan yang praktis,
+                cepat, dan berkualitas.
+            </p>
+
+            <p>
+                Kami selalu mengutamakan kepuasan pelanggan
+                melalui hasil cetakan yang baik dan harga
+                yang terjangkau.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+
+        <h2>Layanan Kami</h2>
+
+        <p class="section-description">
+            Berbagai layanan yang tersedia di LiteraPrint.
+        </p>
+
+        <div class="service-container">
+
+            <div class="service-card">
+                <div class="service-icon">🖨️</div>
+                <h3>Print Dokumen</h3>
+                <p>Layanan cetak dokumen hitam putih dan berwarna.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📄</div>
+                <h3>Fotokopi</h3>
+                <p>Layanan penggandaan dokumen dengan hasil jelas.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Penjilidan</h3>
+                <p>Layanan penjilidan dokumen agar lebih rapi.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery">
+
+        <h2>Galeri Kami</h2>
+
+        <p class="section-description">
+            Beberapa aktivitas dan layanan percetakan kami.
+        </p>
+
+        <div class="gallery-container">
+
+            <img
+                src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600"
+                alt="Mesin printer">
+
+            <img
+                src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600"
+                alt="Buku dan dokumen">
+
+            <img
+                src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600"
+                alt="Peralatan alat tulis">
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+
+        <h2>Kontak Kami</h2>
+
+        <p class="section-description">
+            Silakan hubungi kami untuk informasi dan pemesanan.
+        </p>
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <h3>Informasi Kontak</h3>
+
+                <p>📍 Mijen, Semarang, Jawa Tengah</p>
+                <p>📞 081331176953</p>
+                <p>✉️ literaprint@email.com</p>
+                <p>🕒 Melayani kebutuhan cetak Anda.</p>
+
+            </div>
+
+            <form
+                class="contact-form"
+                action="mailto:literaprint@email.com"
+                method="post"
+                enctype="text/plain">
+
+                <input
+                    type="text"
+                    name="nama"
+                    placeholder="Nama Lengkap"
+                    required>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Alamat Email"
+                    required>
+
+                <input
+                    type="text"
+                    name="subjek"
+                    placeholder="Subjek Pesan"
+                    required>
+
+                <textarea
+                    name="pesan"
+                    rows="5"
+                    placeholder="Tuliskan pesan Anda..."
+                    required></textarea>
+
+                <button type="submit">Kirim Pesan</button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>LiteraPrint.</h3>
+
+        <p>Solusi Cetak Cepat dan Berkualitas.</p>
+
+        <p>&copy; 2026 LiteraPrint. All Rights Reserved.</p>
+
+    </footer>
+
+</body>
+</html>
